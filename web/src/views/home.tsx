@@ -1,5 +1,3 @@
-import './home.scss';
-
 import { graphql, PageProps } from 'gatsby';
 import * as React from 'react';
 

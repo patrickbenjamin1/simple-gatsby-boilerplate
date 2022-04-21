@@ -1,5 +1,3 @@
-import './shell.scss';
-
 import * as React from 'react';
 
 import { Meta } from './meta';

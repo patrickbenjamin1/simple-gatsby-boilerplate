@@ -8,11 +8,11 @@ export const Meta: React.FC = () => {
   const data = useStaticQuery<ShellQuery>(
     graphql`
       query Shell {
-        prismicHomePage {
+        prismicMetadata {
           data {
-            meta_description
-            meta_title
-            meta_image {
+            description
+            title
+            image {
               url
             }
           }
@@ -21,12 +21,12 @@ export const Meta: React.FC = () => {
     `
   );
 
-  const title = data.prismicHomePage?.data.meta_title;
-  const description = data.prismicHomePage?.data.meta_description;
-  const image = data.prismicHomePage?.data.meta_image?.url;
+  const title = data.prismicMetadata?.data.title;
+  const description = data.prismicMetadata?.data.description;
+  const image = data.prismicMetadata?.data.image?.url;
 
   return (
-    <Helmet titleTemplate={`%s | ${data.prismicHomePage?.data.meta_title}`} defaultTitle={data.prismicHomePage?.data.meta_title}>
+    <Helmet titleTemplate={`%s | ${data.prismicMetadata?.data.title}`} defaultTitle={data.prismicMetadata?.data.title}>
       {!!title && <meta name="og:title" content={title} />}
       {!!description && <meta name="og:description" content={description} />}
       {!!description && <meta name="twitter:description" content={description} />}
