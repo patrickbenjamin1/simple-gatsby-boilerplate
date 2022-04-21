@@ -1,0 +1,4 @@
+@use './colours';
+@use './spacing';
+
+$small: spacing.$xxsmall spacing.$xxsmall spacing.$small transparentize(colours.$grey-dark, 0.7);

@@ -1,0 +1,31 @@
+overwrite: true
+schema: 'src/generated/schema.graphql'
+documents:
+  - ./src/**/*.{ts,tsx}
+generates:
+  ./src/generated/graphql.ts:
+    hooks:
+      afterOneFileWrite:
+        - sed -i -e 's/| {}//g' ./src/generated/graphql.ts
+        - npx prettier --write
+    plugins:
+      - typescript
+      - typescript-operations
+config:
+  constEnums: false
+  enumsAsTypes: false
+  numericEnums: false
+  futureProofEnums: false
+  enumsAsConst: false
+  onlyOperationTypes: false
+  immutableTypes: false
+  maybeValue: T
+  noExport: false
+  enumPrefix: true
+  fieldWrapperValue: T
+  wrapFieldDefinitions: false
+  skipTypename: true
+  nonOptionalTypename: false
+  useTypeImports: false
+  namingConvention:
+    enumValues: keep

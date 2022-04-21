@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "CommonJS",
+    "target": "ES6",
+    "jsx": "preserve",
+    "lib": ["dom", "es2015", "es2017"],
+    "experimentalDecorators": true,
+    "allowJs": false
+  },
+  "include": ["./**/*", "../src/types/**/*", "./*", "../src/utils/**/*"]
+}

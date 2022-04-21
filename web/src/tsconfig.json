@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "esnext",
+    "jsx": "preserve",
+    "strict": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "es2015", "es2017"],
+    "skipDefaultLibCheck": true,
+    "experimentalDecorators": true
+  },
+  "include": ["./**/*", "types", "../gatsby/gatsby-browser.ts"]
+}
