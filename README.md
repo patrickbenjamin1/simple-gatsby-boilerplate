@@ -1,6 +1,4 @@
-# Directory for Dean Blunt's Art Exhibitions
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/05730248-994a-4a22-a61f-88e86a151dc2/deploy-status)](https://app.netlify.com/sites/TODO/deploys)
+# Simple Gatsby Boilerplate
 
 ### Tech
 
