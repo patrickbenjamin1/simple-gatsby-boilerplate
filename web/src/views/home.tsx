@@ -1,19 +1,28 @@
-import { graphql, PageProps } from 'gatsby';
-import * as React from 'react';
+import { PageProps } from 'gatsby'
+import * as React from 'react'
 
-import { View } from '../components/view';
-import { HomePageQuery } from '../generated/graphql';
+import { View } from '../components/view'
 
-export interface HomeViewProps extends PageProps<HomePageQuery> {}
+export interface HomeViewProps extends PageProps<{}> {}
 
-export const HomeView: React.FC<HomeViewProps> = ({ data }) => {
-  return <View className="home-view" hideFooterLine></View>;
-};
+export const HomeView: React.FC<HomeViewProps> = () => {
+  return (
+    <View className="home-view">
+      <p>I'm home</p>
+    </View>
+  )
+}
 
-export default HomeView;
+export default HomeView
+// export default withPrismicUnpublishedPreview(HomeView)
 
-export const pageQuery = graphql`
-  query HomePage {
-    
-  }
-`;
+// export const pageQuery = graphql`
+//   query HomePage {
+//     prismicHomePage {
+//       _previewable
+//       data {
+
+//       }
+//     }
+//   }
+// `

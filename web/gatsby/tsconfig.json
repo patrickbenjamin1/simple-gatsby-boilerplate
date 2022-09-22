@@ -10,5 +10,5 @@
     "experimentalDecorators": true,
     "allowJs": false
   },
-  "include": ["./**/*", "../src/types/**/*", "./*", "../src/utils/**/*"]
+  "include": ["./**/*", "../src/types/**/*", "./*", "../src/utils/**/*", "../gatsby-*.ts*"]
 }

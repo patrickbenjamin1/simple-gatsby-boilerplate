@@ -1,13 +1,11 @@
-import * as React from 'react';
+// import { withPrismicUnpublishedPreview } from 'gatsby-plugin-prismic-previews'
+import * as React from 'react'
 
-import { View } from '../components/view';
+import { View } from '../components/view'
 
 export const FourOhFourView: React.FC = () => {
-  return (
-    <View title="404">
-      <h1>404</h1>
-    </View>
-  );
-};
+  return <View title="404">uh oh</View>
+}
 
-export default FourOhFourView;
+// export default withPrismicUnpublishedPreview(FourOhFourView)
+export default FourOhFourView

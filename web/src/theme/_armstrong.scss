@@ -1,4 +1,157 @@
 @use './variables/spacing';
+@use './variables/timing';
 @use './variables/shadows';
 @use './variables/colours';
 @use './variables/responsive';
+
+.arm-group {
+  .arm-group-inner {
+    gap: spacing.$small;
+
+    > *:not(:last-child) {
+      margin: inherit;
+    }
+  }
+}
+
+.arm-button {
+  background-color: colours.$accent;
+  border-radius: 100px;
+  padding: spacing.$small spacing.$medium;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: lowercase;
+
+  .hm-svg-arrow svg {
+    transition: transform timing.$quick;
+  }
+
+  &[data-disabled='true'] {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
+
+.arm-select {
+  .arm-input-inner {
+    padding: 0;
+
+    select {
+      padding: 0 spacing.$small;
+    }
+  }
+  .arm-select-overlay-icon {
+    height: 0.7rem;
+    right: spacing.$small;
+  }
+}
+
+@include responsive.not-small {
+  .arm-button {
+    &:hover:not([data-disabled='true']) {
+      .hm-svg-arrow svg {
+        transform: translate(spacing.$small, 0);
+      }
+    }
+  }
+}
+
+.arm-link-button {
+  width: max-content;
+}
+
+.arm-input-inner {
+  border: spacing.$line-thickness solid colours.$black;
+  background-color: colours.$white;
+  border-radius: spacing.$xsmall;
+
+  textarea {
+    padding: spacing.$small 0;
+    width: 100%;
+  }
+}
+
+.arm-label-wrapper {
+  padding: spacing.$small 0;
+  display: block;
+
+  .arm-label-wrapper-content {
+    display: block;
+    margin-bottom: spacing.$xsmall;
+    font-size: 0.8rem;
+    text-transform: lowercase;
+  }
+}
+
+.arm-switch-input {
+  &[data-checked='true'] {
+    .arm-switch-input-inner {
+      background-color: colours.$accent;
+    }
+  }
+
+  .arm-switch-input-inner {
+    border-radius: 50px;
+
+    &::after {
+      border-radius: 50%;
+      background-color: colours.$white;
+    }
+  }
+}
+
+.arm-toast-notification-container-right {
+  max-width: 400px;
+
+  .arm-toast-notification-toasts {
+    padding: spacing.$small;
+
+    .arm-toast-notification-inner {
+      border-radius: spacing.$small;
+      padding: spacing.$small;
+      box-shadow: spacing.$xsmall spacing.$xsmall spacing.$small transparentize(colours.$black, 0.9);
+
+      p {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+.arm-listbox {
+  width: 180px;
+
+  .placeholder {
+    color: colours.$grey-dark;
+    font-size: 1rem;
+  }
+}
+
+.arm-modal.arm-dropdown-content {
+  margin-top: spacing.$small;
+  border-radius: spacing.$xxsmall;
+  height: max-content;
+  box-shadow: shadows.$small;
+  width: 100%;
+  max-width: 230px;
+
+  .arm-dropdown-content-inner {
+    padding: spacing.$xsmall;
+
+    .arm-dropdown-item {
+      padding: spacing.$xxsmall spacing.$small;
+    }
+  }
+}
+
+@include responsive.small {
+  .arm-modal.arm-dropdown-content {
+    width: 100%;
+    max-width: calc(100vw - #{spacing.$small * 2});
+    left: spacing.$small;
+
+    .arm-dropdown-item {
+      font-size: 1.4rem;
+    }
+  }
+}

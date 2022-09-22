@@ -1,22 +1,22 @@
-import { NodePluginArgs } from 'gatsby';
+import { NodePluginArgs } from 'gatsby'
 
 export namespace Pagination {
   export type IPaginationContext<TItem = { uid: string }, TAdditional = {}> = TAdditional & {
     /** the items in the page */
-    items: TItem[];
+    items: TItem[]
 
     /** the current page */
-    page: number;
+    page: number
 
     /** the total number of pages */
-    total: number;
+    total: number
 
     /** skip for gql query */
-    skip: number;
+    skip: number
 
     /** take for gql query */
-    take: number;
-  };
+    take: number
+  }
 
   export const createPages = <TItem, TAdditional = {}>(
     createPage: NodePluginArgs['actions']['createPage'],
@@ -28,12 +28,12 @@ export namespace Pagination {
       additionalContext,
     }: { pageLength: number; component: string; path: (pageNumber: number) => string; additionalContext?: TAdditional }
   ) => {
-    const pages = Math.ceil(items.length / pageLength);
+    const pages = Math.ceil(items.length / pageLength)
 
     for (let page = 1; page <= pages; page += 1) {
-      const pageItems = items.slice(pageLength * (page - 1), pageLength * page);
-      const skip = pageLength * (page - 1);
-      const take = pageLength;
+      const pageItems = items.slice(pageLength * (page - 1), pageLength * page)
+      const skip = pageLength * (page - 1)
+      const take = pageLength
 
       const context: IPaginationContext<TItem, TAdditional> = {
         items: pageItems,
@@ -42,13 +42,13 @@ export namespace Pagination {
         skip,
         take,
         ...additionalContext,
-      };
+      }
 
       createPage({
         path: path(page),
         component,
         context,
-      });
+      })
     }
-  };
+  }
 }

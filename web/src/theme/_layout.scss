@@ -1,4 +1,6 @@
 @use './variables/colours';
+@use './variables/spacing';
+@use './variables/timing';
 
 * {
   box-sizing: border-box;
@@ -22,4 +24,33 @@ body {
 /* stylelint-disable-next-line selector-no-qualifying-type */
 html[data-scrolling-disabled='true'] {
   overflow: hidden;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid colours.$black;
+  margin: spacing.$large 0;
+}
+
+.logo {
+  max-width: 200px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: colours.$grey-light;
+}
+::-webkit-scrollbar-thumb {
+  background-color: colours.$grey-dark;
+  transition: background-color timing.$quick;
+
+  &:active {
+    background-color: lighten(colours.$grey-dark, 10%);
+  }
+}
+
+html {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
 }

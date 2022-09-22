@@ -1,8 +1,8 @@
-$large: 1200px;
-$medium: 1024px;
+$large: 1600px;
+$medium: 1200px;
 $small: 850px;
 
-@mixin media-query($device) {
+@mixin media-query-max($device) {
   @media screen and (max-width: $device) {
     @content;
   }
@@ -15,19 +15,19 @@ $small: 850px;
 }
 
 @mixin large {
-  @include media-query($large) {
+  @include media-query-max($large) {
     @content;
   }
 }
 
 @mixin medium {
-  @include media-query($medium) {
+  @include media-query-max($medium) {
     @content;
   }
 }
 
 @mixin small {
-  @include media-query($small) {
+  @include media-query-max($small) {
     @content;
   }
 }

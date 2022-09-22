@@ -1,20 +1,42 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { ModalProvider, ToastProvider } from '@rocketmakers/armstrong-edge';
-import { GatsbyBrowser } from 'gatsby';
-import * as React from 'react';
+import { useLocation } from '@reach/router'
+import { ArmstrongConfigProvider, ModalProvider, ToastProvider } from '@rocketmakers/armstrong-edge'
+import { GatsbyBrowser, navigate } from 'gatsby'
+// import { componentResolverFromMap, PrismicPreviewProvider } from 'gatsby-plugin-prismic-previews'
+import * as React from 'react'
 
-import { IShellProps, Shell } from './components/shell';
+import { LinkWrapper } from './components/linkWrapper'
+import { Shell } from './components/shell'
 
-export const Providers: React.FC<IShellProps> = ({ children }) => {
+export const Providers: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+  const location = useLocation()
+
   return (
-    <ModalProvider>
-      <ToastProvider autoDismissTime={6000}>
-        <Shell>{children}</Shell>
-      </ToastProvider>
-    </ModalProvider>
-  );
-};
+    <ArmstrongConfigProvider
+      routing={{ LinkComponent: LinkWrapper, location, navigate: (to, action) => navigate(to, { replace: action === 'replace' }) }}
+    >
+      {/* <PrismicPreviewProvider
+        repositoryConfigs={[
+          {
+            repositoryName: 'humm-studios',
+            linkResolver,
+            componentResolver: componentResolverFromMap({
+              home_page: HomeView,
+              navigation_menu: HomeView,
+              metadata: HomeView,
+            }),
+          },
+        ]}
+      > */}
+      <ModalProvider>
+        <ToastProvider autoDismissTime={6000}>
+          <Shell>{children}</Shell>
+        </ToastProvider>
+      </ModalProvider>
+      {/* </PrismicPreviewProvider> */}
+    </ArmstrongConfigProvider>
+  )
+}
 
 export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({ element }) => {
-  return <Providers>{element}</Providers>;
-};
+  return <Providers>{element}</Providers>
+}

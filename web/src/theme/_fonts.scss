@@ -4,12 +4,15 @@
 @use './variables/spacing';
 
 /* stylelint-disable-next-line no-invalid-position-at-import-rule */
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;800&display=swap');
-/* stylelint-disable-next-line no-invalid-position-at-import-rule */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700;900&display=swap');
 
 html {
   font-size: typography.$font-size-base;
+  font-family: typography.$font-sans;
+  font-weight: lighter;
+}
+
+button {
   font-family: typography.$font-sans;
 }
 
@@ -21,4 +24,39 @@ h5,
 h6,
 p {
   margin: 0;
+}
+
+h1 {
+  text-transform: lowercase;
+}
+
+h2 {
+  text-transform: lowercase;
+}
+
+h3 {
+  font-size: 1.3rem;
+  text-transform: lowercase;
+}
+
+p {
+  line-height: 1.6rem;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+@include responsive.small {
+  html {
+    font-size: typography.$font-size-base-mobile;
+  }
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+span.arrow {
+  margin-left: spacing.$xsmall;
 }

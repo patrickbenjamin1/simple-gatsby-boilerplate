@@ -1,3 +1,5 @@
+@use './spacing';
+
 @import '~@rocketmakers/armstrong-edge/dist/imports';
 
 @mixin colourise($colour) {
@@ -15,5 +17,33 @@
     overflow: hidden;
 
     @content;
+  }
+}
+
+@mixin fixed-width {
+  margin: 0 auto;
+  max-width: spacing.$fixed-width;
+  width: 100%;
+}
+
+// hacky fix - some of those child elements have position: fixed so this is necessary to allow them to
+// transform without their positions resetting without the scroll
+
+@mixin transform-shell-content-children($amount) {
+  ~ .shell-content {
+    transform: none;
+
+    .hm-view-inner,
+    .hm-view-gutter,
+    .hm-view-right-inner,
+    .hm-view-subview {
+      transform: translate3d($amount, 0, 0);
+    }
+    .hm-view-subview {
+      .hm-view-inner,
+      .hm-view-gutter {
+        transform: none;
+      }
+    }
   }
 }
